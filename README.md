@@ -1,230 +1,102 @@
-# MYSQL-project
-
-# MySQL_Database_Project
-
-MySQL Database Project :-
-
-Scenario :
-
-Based in Chicago, Illinois, Little Lemon is a family-owned Mediterranean restaurant, focused on traditional recipes served with a modern twist. The chefs draw inspiration from Italian, Greek, and Turkish culture and have a menu of 12–15 items that they rotate seasonally. The restaurant has a rustic and relaxed atmosphere with moderate prices, making it a popular place for a meal any time of the day.
-
-Little Lemon is owned by two Italian brothers, Mario and Adrian, who moved to the United States to pursue their shared dream of owning a restaurant. To craft the menu, Mario relies on family recipes and his experience as a chef in Italy. Adrian does all the marketing for the restaurant and led the effort to expand the menu beyond classic Italian to incorporate additional cuisines from the Mediterranean region.
-
-
-Prerequisites :
-
-You must first create the Little Lemon database in MySQL. You must also have the Customers, Bookings and Courses tables created and populated with relevant data as shown below.
-
-
-1. The code to create the database is as follows :
-
+-- MySQL Database Project
+-- The code to create the database is as follows:
 CREATE DATABASE IF NOT EXISTS Little_Lemon;
-
-
-2. The code to use the database is as follows :
-
+-- The code to see if the database is created:
+SHOW DATABASES;
+-- The code to use the database is as follows:
 USE Little_Lemon;
-
-
-3. The code to create the Customers table is as follows :
-
-CREATE TABLE Customers(
-
-CustomerID INT NOT NULL PRIMARY KEY, 
-
-FullName VARCHAR(100) NOT NULL, 
-
-PhoneNumber INT NOT NULL UNIQUE
-);
-
-
-4. The code to populate the Customers table is as follows :
-
+-- The code to create the Customers table is as follows:
+CREATE TABLE Customers(CustomerID INT NOT NULL PRIMARY KEY, FullName VARCHAR(100) NOT NULL, PhoneNumber INT NOT NULL UNIQUE);
+-- The code to see if the table is created:
+SHOW TABLES;
+-- The code to populate the Customers table is as follows:
 INSERT INTO Customers(CustomerID, FullName, PhoneNumber) VALUES 
-
 (1, "Vanessa McCarthy", 0757536378), 
-
 (2, "Marcos Romero", 0757536379), 
-
 (3, "Hiroki Yamane", 0757536376), 
-
 (4, "Anna Iversen", 0757536375), 
-
 (5, "Diana Pinto", 0757536374),     
-
 (6, "Altay Ayhan", 0757636378),      
-
 (7, "Jane Murphy", 0753536379),      
-
 (8, "Laurina Delgado", 0754536376),      
-
 (9, "Mike Edwards", 0757236375),     
-
-
-The Customers table content is shown in the following screenshot :
-
-
-
-5. The code to create the Bookings table is as follows :
-
-CREATE TABLE Bookings(BookingID INT, BookingDate DATE,TableNumber INT, NumberOfGuests INT,CustomerID INT);
-
-
-6. The code to populate the Bookings table with data is as follows :
-
+(10, "Karl Pederson", 0757936374);
+-- The code to see Customers table :
+SELECT * FROM Customers;
+-- The code to create the Bookings table is as follows:
+CREATE TABLE Bookings(BookingID INT, BookingDate DATE,TableNumber INT, NumberOfGuests INT,CustomerID INT); 
+-- The code to populate the Bookings table with data is as follows:
 INSERT INTO Bookings 
-
-(BookingID, BookingDate, TableNumber, NumberOfGuests, CustomerID)
-
-VALUES 
-
+(BookingID, BookingDate, TableNumber, NumberOfGuests, CustomerID) 
+VALUES
 (10, '2021-11-10', 7, 5, 1),  
-
 (11, '2021-11-10', 5, 2, 2),  
-
 (12, '2021-11-10', 3, 2, 4), 
-
 (13, '2021-11-11', 2, 5, 5),  
-
 (14, '2021-11-11', 5, 2, 6),  
-
 (15, '2021-11-11', 3, 2, 7), 
-
 (16, '2021-11-11', 3, 5, 1),  
-
 (17, '2021-11-12', 5, 2, 2),  
-
 (18, '2021-11-12', 3, 2, 4), 
-
 (19, '2021-11-13', 7, 5, 6),  
-
 (20, '2021-11-14', 5, 2, 3),  
-
 (21, '2021-11-14', 3, 2, 4);
-
-
-The Bookings table is shown in the following screenshot:
-
-
-
-
-7. The code to create the restaurant Courses table is as follows :
-
-CREATE TABLE Courses (CourseName VARCHAR(255) PRIMARY KEY, Cost Decimal(4,2));
-
-
-8. The code to populate the restaurant's Courses table with data is as follows :
-
+-- The code to see Bookings table:
+SELECT * FROM Bookings;
+-- The code to create the restaurant Courses table is as follows:
+CREATE TABLE Courses(CourseName VARCHAR(255) PRIMARY KEY, Cost Decimal(4,2));
+-- The code to populate the restaurant's Courses table with data is as follows:
 INSERT INTO Courses (CourseName, Cost) VALUES 
-
 ("Greek salad", 15.50), 
-
 ("Bean soup", 12.25), 
-
 ("Pizza", 15.00), 
-
 ("Carbonara", 12.50), 
-
 ("Kabasa", 17.00), 
-
 ("Shwarma", 11.30);
-
-
-The Courses table is shown in the following screenshot :
-
-
-This activity has two main objectives :
-
-1. Recap of all topics introduced in MySQL.
-
-2. Provide experience with developing core database queries.
-
-
-Task Instructions :
-
-Task 1: Filter data using the WHERE Clause and Logical Operators.
-
-Create SQL statement to print all records from Bookings table for the following bookings dates using the BETWEEN operator: 2021-11-11, 2021-11-12 and 2021-11-13. 
-
-The expected output result should be the same as shown in the following screenshot :
-
-
-
-Task 2: Create a JOIN Query.
-
-Create a JOIN SQL statement on the Customers and Bookings tables. The statement must print the customers full names and related bookings IDs from the date 2021-11-11.
-
-The expected output result should be the same as that shown in the following screensho
-
-
-Task 3: Create a GROUP BY Query.
-
-Create a SQL statement to print the bookings dates from Bookings table. The statement must show the total number of bookings placed on each of the printed dates using the GROUP BY BookingDate. 
-
-The expected output result should be the same as that shown in the following screenshot :
-
-
-
-Task 4: Create a REPLACE Statement.
-
-Create a SQL REPLACE statement that updates the cost of the Kabsa course from $17.00 to $20.00. The expected output result should be the same as that shown in the following screenshot :
-
-
-Task 5: Create Constraints.
-
-Create a new table called "DeliveryAddress" in the Little Lemon database with the following columns and constraints :
-
-1. ID: INT PRIMARY KEY
-
-2. Address: VARCHAR(255) NOT NULL
-
-3. Type: NOT NULL DEFAULT "Private"
-
-4. CustomerID: INT NOT NULL FOREIGN KEY referencing CustomerID in the Customers table
-
-The expected table structure should be the same as that shown in the following screenshot :
-
-
-Task 6: Alter Table Structure.
-
-Create a SQL statement that adds a new column called 'Ingredients' to the Courses table.
-
-1. Ingredients: VARCHAR(255)
-
-Once the column has been added, the table's new structure should be the same as shown in the following screenshot :
-
-
-
-Task 7: Create a Subquery.
-
-Create a SQL statement with a subquery that prints the full names of all customers who made bookings in the restaurant on the following date: 2021-11-11.
-
-The expected output result of your query should be similar to the output in the following screenshot 
-
-
-Task 8: Create a Virtual Table.
-
-Create the "BookingsView" virtual table to print all bookings IDs, bookings dates and the number of guests for bookings made in the restaurant before 2021-11-13 and where number of guests is larger than 3.
-
-Select all data from the BookingsView virtual table. The expected output result should be the same as shown in the following screenshot:
-
-
-
-Task 9: Create a Stored Procedure.
-
-Create a stored procedure called 'GetBookingsData'. The procedure must contain one date parameter called "InputDate". This parameter retrieves all data from the Bookings table based on the user input of the date.
-
-After executing the query, call the "GetBookingsData" with '2021-11-13' as the input date passed to the stored procedure to show all bookings made on that date. The expected output of the CALL statement should be the same as the following screenshot :
-
-
-Task 10: Use the String Function.
-
-Create a SQL SELECT query using appropriate MySQL string function to list "Booking Details" including booking ID, booking date and number of guests. The data must be listed in the same format as the following example:
-
-1. ID: 10, 
-
-2. Date: 2021-11-10, 
-
-3. Number of guests: 5
-
-The expected output result should be similar to the following screenshot (notice the table title "Booking Details") :
+-- The code to see Courses table :
+SELECT * FROM Courses;
+-- The code to see all the created tables.
+SHOW TABLES;
+-- Filter data using the WHERE clause and logical operators.
+SELECT * 
+FROM Bookings 
+WHERE BookingDate BETWEEN '2021-11-11' AND '2021-11-13';
+-- Create a JOIN Query.
+SELECT Customers.FullName, Bookings.BookingID 
+FROM Customers RIGHT JOIN Bookings 
+ON Customers.CustomerID = Bookings.CustomerID 
+WHERE BookingDate = '2021-11-11';
+-- Create a GROUP BY Query.
+SELECT BookingDate, COUNT(BookingDate) 
+FROM Bookings 
+GROUP BY BookingDate;
+-- Create a REPLACE Statement and then see the changes made.
+REPLACE INTO Courses (CourseName, Cost) VALUES ("Kabasa", 20.00);
+SELECT * FROM Courses;
+-- Create Constraints and then see the columns created in the table 'DeliveryAddress'.
+CREATE TABLE DeliveryAddress(     
+    ID INT PRIMARY KEY,     
+    Address VARCHAR(255) NOT NULL,     
+    Type VARCHAR(100) NOT NULL DEFAULT "Private",     
+    CustomerID INT NOT NULL,
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+);
+SHOW COLUMNS FROM DeliveryAddress;
+-- Alter Table Structure and then see the columns from Courses.
+ALTER TABLE Courses ADD COLUMN Ingredients VARCHAR(255);
+SHOW COLUMNS FROM Courses;
+-- Create a Subquery.
+SELECT FullName 
+FROM Customers 
+WHERE (SELECT CustomerID FROM Bookings WHERE Customers.CustomerID = Bookings.CustomerID and BookingDate = "2021-11-11");
+-- Create a Virtual Table and then see the Virtual Table.
+CREATE VIEW BookingsView AS SELECT BookingID, BookingDate, NumberOfGuests FROM Bookings WHERE NumberOfGuests > 3 AND BookingDate < "2021-11-13";
+SELECT * FROM BookingsView;
+-- Create a Stored Procedure and then call the Stored Procedure.
+CREATE PROCEDURE GetBookingsData (InputDate DATE) 
+SELECT * 
+FROM Bookings 
+WHERE BookingDate = InputDate;
+CALL GetBookingsData ("2021-11-13");
+-- Use the String Function.
+SELECT CONCAT("ID: ", BookingID,', Date: ', BookingDate,', Number of guests: ', NumberOfGuests) AS "Booking Details" FROM Bookings;
